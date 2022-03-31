@@ -26,7 +26,6 @@ class MyHomePage extends StatelessWidget {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJFAYm5hkFI69YRWmwcUO_rblt0l3sY8aeNw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpPjo5FUmNaKP_Y2_lnK5oFpWDy9anoYT-YA&usqp=CAU",
     "https://pbs.twimg.com/media/FJjoceeUcAEuKoT.jpg",
-    SliverGridDelegateWithFixedCrossAxisCount()
   ];
 
   @override
