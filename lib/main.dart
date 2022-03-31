@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     crossAxisCount: 3,
                     children: List.generate(24, (index) {
-                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network());
+                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network(images[0]));
                     }),
                   ),
                 );
