@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final List images = [
     "https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"
-  ]
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +36,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           child: null),
-      SafeArea(child: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20.0), 
-          child: Text(
-            'Gallery', 
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
+      SafeArea(child: Center(child: Padding(padding: const EdgeInsets.only(top: 20.0), child: Text('Gallery', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
       SafeArea(
           child: DraggableScrollableSheet(
               initialChildSize: 0.65,
