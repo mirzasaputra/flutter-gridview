@@ -22,20 +22,42 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Gallery', textAlign: TextAlign.center),
-        ),
-        body: GridView.builder(
-            padding: const EdgeInsets.all(8.0),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
+        body: Stack(children: <Widget>[
+      Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg1.jpg'),
+              fit: BoxFit.cover,
             ),
-            itemCount: 24,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.network("https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"),
-              );
-            }));
+          ),
+          child: null),
+      SafeArea(child: Center(child: Padding(padding: const EdgeInsets.only(top: 20.0), child: Text('Gallery')))),
+      SafeArea(
+          child: DraggableScrollableSheet(
+              initialChildSize: 0.8,
+              minChildSize: 0.8,
+              maxChildSize: 1,
+              builder: (context, scrollController) {
+                return Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    color: Colors.white,
+                  ),
+                  padding: const EdgeInsets.only(top: 10),
+                  child: GridView.count(
+                    controller: scrollController,
+                    padding: const EdgeInsets.all(8.0),
+                    crossAxisCount: 3,
+                    children: List.generate(24, (index) {
+                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network("https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"));
+                    }),
+                  ),
+                );
+              })),
+    ]));
   }
 }
