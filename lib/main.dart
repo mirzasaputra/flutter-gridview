@@ -19,6 +19,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final List images = [
+    "https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"
+  ]
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +36,16 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           child: null),
-      SafeArea(child: Center(child: Padding(padding: const EdgeInsets.only(top: 20.0), child: Text('Gallery')))),
+      SafeArea(child: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20.0), 
+          child: Text(
+            'Gallery', 
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
       SafeArea(
           child: DraggableScrollableSheet(
-              initialChildSize: 0.8,
-              minChildSize: 0.8,
+              initialChildSize: 0.65,
+              minChildSize: 0.65,
               maxChildSize: 1,
               builder: (context, scrollController) {
                 return Container(
@@ -53,7 +62,7 @@ class MyHomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     crossAxisCount: 3,
                     children: List.generate(24, (index) {
-                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network("https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"));
+                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network());
                     }),
                   ),
                 );
