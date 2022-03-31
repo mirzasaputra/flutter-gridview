@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Belajar Flutter',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
@@ -20,48 +20,26 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final List images = [
-    "https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg"
+    "https://i.pinimg.com/564x/33/17/47/331747bc6550a4f1045ec2326b597e1b.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyDZB4go2krd2QFI9HQomfRP5pQ8sKc_W9sA&usqp=CAU"
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(children: <Widget>[
-      Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/bg1.jpg'),
-              fit: BoxFit.cover,
+        appBar: AppBar(title: Text('Gallery')),
+        body: GridView.builder(
+            padding: const EdgeInsets.all(0.8),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
             ),
-          ),
-          child: null),
-      SafeArea(child: Center(child: Padding(padding: const EdgeInsets.only(top: 20.0), child: Text('Gallery', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
-      SafeArea(
-          child: DraggableScrollableSheet(
-              initialChildSize: 0.65,
-              minChildSize: 0.65,
-              maxChildSize: 1,
-              builder: (context, scrollController) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
-                    color: Colors.white,
-                  ),
-                  padding: const EdgeInsets.only(top: 10),
-                  child: GridView.count(
-                    controller: scrollController,
-                    padding: const EdgeInsets.all(8.0),
-                    crossAxisCount: 3,
-                    children: List.generate(24, (index) {
-                      return Padding(padding: const EdgeInsets.all(8.0), child: Image.network(images[0]));
-                    }),
-                  ),
-                );
-              })),
-    ]));
+            itemCount: 24,
+            itemBuilder: (context, index) {
+              if (index > 2) {
+                return Padding(padding: const EdgeInsets.all(0.8), child: Image.network(images[index % 3]));
+              } else {
+                return Padding(padding: const EdgeInsets.all(0.8), child: Image.network(images[index]));
+              }
+            }));
   }
 }
